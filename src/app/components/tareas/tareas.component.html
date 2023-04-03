@@ -1,0 +1,21 @@
+<section class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <input type="text" class="form-control form-control-lg" placeholder="Ingresar Tarea" [(ngModel)]="toDoName" (keyup.enter)="addTodo()">
+        </div>
+        <div class="col-lg-4 offset-lg-4 mt-3">
+            <div class="card p-3" *ngIf="toDos.length == 0">
+                <h6>No hay tareas para mostrar...</h6>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between" *ngFor="let toDo of toDos;let i = index">
+                    <span class="cursor" (click)="actualizarToDo(toDo,i)">
+                        <i [ngClass]="toDo.state==true?'fa-regular fa-circle-check text-success':'fa-regular fa-circle'"></i>
+                    </span>
+                    {{toDo.name}}
+                    <span class="text-danger cursor" (click)="eliminar(i)"><i class="fa-solid fa-trash"></i></span>
+                </li>
+              </ul>
+        </div>
+    </div>
+</section>
